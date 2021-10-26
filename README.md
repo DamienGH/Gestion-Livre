@@ -1,7 +1,7 @@
 # Gestion-Livre
 ** Version Alpha **
 
-Appli de gestion de collection de livre dont la base est sur la formation "Développez des applications Web avec Angular" d'OpenClassRoom: https://openclassrooms.com/fr/courses/4668271-developpez-des-applications-web-avec-angular
+Appli de gestion de collection de livre dont la base est tirée de la formation "Développez des applications Web avec Angular" d'OpenClassRoom: https://openclassrooms.com/fr/courses/4668271-developpez-des-applications-web-avec-angular
 
 Améliorations les plus importantes apportées : 
 - Compatibilité Angular 12
