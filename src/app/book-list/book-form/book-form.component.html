@@ -1,14 +1,19 @@
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
       <h2>Enregistrer un nouveau livre</h2>
-      <form [formGroup]="bookForm" (ngSubmit)="onSaveBook()">
+      <form [formGroup]="bookForm" (ngSubmit)="onSaveBook($event.submitter.id)">
         <div class="form-group">
-          <label for="title">Titre</label>
+          <label for="title">Titre*</label>
           <input type="text" id="title"
                  class="form-control" formControlName="title">
         </div>
         <div class="form-group">
-          <label for="author">Auteur</label>
+          <label for="subtitle">Sous-titre</label>
+          <input type="text" id="subtitle"
+                 class="form-control" formControlName="subtitle">
+        </div>
+        <div class="form-group">
+          <label for="author">Auteur*</label>
           <input type="text" id="author"
                  class="form-control" formControlName="author">
         </div>
@@ -27,12 +32,16 @@
 
         <div class="form-group">
           <label for="synopsis">Scanner de code barre/ISBN</label>
-          <zxing-scanner (scanSuccess)="onCodeResult($event)" [formats]="formatsEnabled" [delayBetweenScanSuccess]="timeBetweenScans" [videoConstraints]=videoConstraints></zxing-scanner>
+          <zxing-scanner (scanSuccess)="onCodeResult($event)" [autofocusEnabled]="true" [formats]="formatsEnabled" [delayBetweenScanSuccess]="timeBetweenScans" [videoConstraints]=videoConstraints></zxing-scanner>
         </div>
 
         <button class="btn btn-success" [disabled]="bookForm.invalid"
-                type="submit">Enregistrer
+                type="submit" id="{{ saveButtonCloseID }}">Enregistrer et fermer
+        </button><span>  </span>
+        <button class="btn btn-success" [disabled]="bookForm.invalid"
+                type="submit" id="{{ saveButtonContinueID }}">Enregistrer et rester
         </button>
+        <label *ngIf="montrerMessageSauvegarde">Sauvegarde OK!</label>
   
       </form>
     </div>
